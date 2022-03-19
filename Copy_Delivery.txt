@@ -1,0 +1,14 @@
+Sub Copy_Delivery()
+Sheets("menu_raw").Select
+Range("A3:BP500").Select
+Selection.AutoFilter
+ActiveSheet.Range("$A$1:$BP$500").AutoFilter Field:=2, Criteria1:="[배달*"
+Range("A4:A500").Select
+Selection.Copy
+Sheets("Delivery").Select
+Range("B6").Select
+ActiveSheet.Paste
+Sheets("menu_raw").Select
+Selection.AutoFilter '필터 해제 - 필터해제는 복사후 해야함.
+
+End Sub

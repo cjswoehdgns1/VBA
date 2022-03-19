@@ -1,0 +1,3 @@
+Sub fitcell()
+Cells.EntireColumn.AutoFit   
+End Sub

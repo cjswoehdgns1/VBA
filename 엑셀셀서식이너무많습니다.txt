@@ -1,0 +1,13 @@
+Sub 셀스타일삭제()
+Dim 스타일 As Style
+Dim 개수 As Long
+For Each 스타일 In ActiveWorkbook.Styles
+If 스타일.BuiltIn = False Then
+On Error Resume Next
+스타일.Delete
+개수 = 개수 + 1
+On Error GoTo 0
+End If
+Next
+MsgBox 개수 & "개의 불필요한 셀 스타일 제거 완료"
+End Sub

@@ -1,0 +1,44 @@
+﻿Sub 반복횟수구하기()
+
+Dim str_address As String
+Dim Dob_address As Double
+Dim repeatedvalue As Double
+Dim i As Integer
+Dim cellvalue As Integer
+Dim dividefilename As String
+
+dividefilename = "20210415_이츠_고용산재 상실판.xlsx"  '파일이름수정필요
+
+ActiveWorkbook.Sheets("sheet1").Select
+Cells(Rows.Count, 1).End(3).Select
+str_address = Selection.Address(RowAbsolute:=False, ColumnAbsolute:=False)
+Dob_address = Right(str_address, Len(str_address) - 1)
+repeatedvalue = Dob_address / 49
+
+    For i = 1 To Int(repeatedvalue) + 1
+
+        cellvalue = (i - 1) * 49
+        Sheets("sheet1").Select
+        Range(Cells(2 + cellvalue, 1), Cells(2 + cellvalue, 1).Offset(48, 0)).EntireRow.Select
+        Selection.Cut
+        Sheets.Add.Name = i
+        Sheets(i).Select
+        Range("A1").Select
+        ActiveSheet.Paste
+    
+    Next i
+
+    For i = 1 To Int(repeatedvalue) + 1
+
+    Workbooks(dividefilename).Activate
+    Sheets(CStr(i)).Select
+    Sheets(CStr(i)).Move
+    ActiveWorkbook.SaveAs Filename:="\\10.23.178.231\rpa\HR\raw\RPA_인사행정팀\사회보험 취득상실 EDI 신고_wkst\2021\4월\0416\이츠고용산재_상실_" + CStr(i) + ".xlsx" ' 폴더 수정필요
+
+    Next i
+    
+'Kill ThisWorkbook.Path + "\" + dividefilename
+    
+End Sub
+
+

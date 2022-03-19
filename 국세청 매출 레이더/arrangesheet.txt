@@ -1,0 +1,27 @@
+Sub cardarrange()
+
+    Sheets("cardsaleslist").Select
+    Columns("A:A").Select
+    Selection.Insert Shift:=xlToRight, CopyOrigin:=xlFormatFromLeftOrAbove
+    Columns("I:I").Select
+    Selection.Copy
+    Range("A1").Select
+    ActiveSheet.Paste
+    Columns("I:I").Select
+    Selection.EntireColumn.Hidden = True
+    
+End Sub
+
+Sub casharrange()
+
+    Sheets("cashsaleslist").Select
+    Columns("A:A").Select
+    Selection.Insert Shift:=xlToRight, CopyOrigin:=xlFormatFromLeftOrAbove
+    Columns("H:H").Select
+    Selection.Copy
+    Range("A1").Select
+    ActiveSheet.Paste
+    Columns("H:H").Select
+    Selection.EntireColumn.Hidden = True
+    
+End Sub

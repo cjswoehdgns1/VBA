@@ -1,0 +1,32 @@
+Sub insertimg()
+
+    Dim Crn As String
+    Dim eaofcrn As Long
+    Dim s_rootpath As String
+    
+    s_rootpath = ThisWorkbook.Path
+    eaofcrn = Sheets("ew사업장").Cells(Rows.Count, 6).End(xlUp).Row - 1
+    Debug.Print (eaofcrn)
+    
+    
+    For i = 1 To eaofcrn
+    
+    sheetname = Sheets("main").Cells(2 + i, 7).Value
+    Debug.Print (sheetname)
+    Sheets(sheetname).Select
+    
+    
+    
+    Range(Cells(9, 1), Cells(28, 11)).Select
+    
+    ActiveSheet.Shapes.AddPicture s_rootpath + "\hometaxdata\screenshot\" + sheetname + "_카드.png", False, True, Selection.Left, Selection.Top, Selection.Width, Selection.Height
+    
+    Range(Cells(9, 15), Cells(35, 24)).Select
+    
+    ActiveSheet.Shapes.AddPicture s_rootpath + "\hometaxdata\screenshot\" + sheetname + "_현금.png", False, True, Selection.Left, Selection.Top, Selection.Width, Selection.Height
+    
+    Next i
+    
+    
+End Sub
+

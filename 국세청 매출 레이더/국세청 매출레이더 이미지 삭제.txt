@@ -1,0 +1,29 @@
+Sub 국세청매출레이더이미지삭제()
+
+    Dim Crn As String
+    Dim eaofcrn As Long
+
+    
+    eaofcrn = Sheets("ew사업장").Cells(Rows.Count, 6).End(xlUp).Row - 1
+    Debug.Print (eaofcrn)
+    
+    
+    For i = 1 To eaofcrn
+    
+    sheetname = Sheets("main").Cells(2 + i, 7).Value
+    Debug.Print (sheetname)
+    Sheets(sheetname).Select
+    
+    
+    
+    ActiveSheet.Shapes.SelectAll
+    Selection.Delete
+    
+    Next i
+    
+    
+    'Sheets("세금계산서").Select
+    
+End Sub
+
+

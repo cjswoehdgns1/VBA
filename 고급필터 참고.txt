@@ -1,0 +1,16 @@
+Sub 고급필터적용()
+'
+' 고급필터적용 매크로
+    Sheets("menu_raw").Select
+    Range("A3:BP200").AdvancedFilter Action:=xlFilterInPlace, CriteriaRange:= _
+        Sheets("setting").Range("B2:O16"), Unique:=False
+End Sub
+
+Sub 고급필터적용해제()
+    Sheets("menu_raw").Select
+    
+    If ActiveSheet.FilterMode Then
+        ActiveSheet.ShowAllData
+    End If
+    
+End Sub
